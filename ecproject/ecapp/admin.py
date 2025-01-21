@@ -6,5 +6,6 @@ admin.site.register(Banner_area)
 admin.site.register(Main_Category)
 admin.site.register(Category)
 admin.site.register(Sub_Category)
+admin.site.register(Banner)
 
  
