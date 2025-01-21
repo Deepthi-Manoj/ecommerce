@@ -2,6 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Banner_area(models.Model):
+    
     title = models.CharField(max_length=200,default="")
     image=  models.ImageField(upload_to='bannertop')
     deal= models.CharField(max_length=50,default="")
@@ -31,6 +32,14 @@ class Sub_Category(models.Model):
 
     def __str__(self):
         return self.name 
+    
+class Banner(models.Model):
+    image = models.ImageField(upload_to='banner')    
+    title = models.CharField(max_length=100,default="")
+    description = models.CharField(max_length=100,default="")
+
+    def __str__(self):
+        return self.title
 
     
       
