@@ -42,7 +42,7 @@
                                 <span class="discount">{{pro.discount}}</span>
                                 </div>
                                 <div class="product-action">
-                                    <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId">
+                                    <a href="#" class="icon-box icon-box-1" data-bs-toggle="modal" data-bs-target="#productModalId-{{forloop.counter}}">
                                         <i class="fal fa-eye"></i>
                                         <i class="fal fa-eye"></i>
                                     </a>
@@ -97,3 +97,122 @@
     </div>
 </section>
 <!-- topsell__area-end -->
+
+
+
+ <!-- shop modal start -->
+  {% for pro in products %}
+ <div class="modal fade" id="productModalId-{{forloop.counter}}" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered product__modal" role="document">
+        <div class="modal-content">
+            <div class="product__modal-wrapper p-relative">
+                <div class="product__modal-close p-absolute">
+                    <button data-bs-dismiss="modal"><i class="fal fa-times"></i></button>
+                </div>
+                <div class="product__modal-inner">
+                    <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="product__modal-box">
+                            <div class="tab-content" id="modalTabContent">
+                                <div class="tab-pane fade show active" id="nav-first" role="tabpanel" aria-labelledby="nav-first-tab">
+                                    <div class="product__modal-img w-img">
+                                        <img src="{{pro.featured_image}}" alt="">
+                                    </div>
+                                </div>
+                                {% for proimage in pro.additional_image_set.all %}
+                                  
+                                <div class="tab-pane fade" id="nav-{{proimage.id}}" role="tabpanel" aria-labelledby="nav-{{proimage.id}}-tab">
+                                    <div class="product__modal-img w-img">
+                                        <img src="{{proimage.images}}" alt="">
+
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        
+                            <ul class="nav nav-tabs" id="modalTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="nav-first-tab" data-bs-toggle="tab" data-bs-target="#nav-first" type="button" role="tab" aria-controls="nav-first" aria-selected="true">
+                                        <img src="{{pro.featured_image}}" alt="" style="width: 85px; height: 85px;">
+                                    </button>
+                                </li>
+                                {% for proimage in pro.additional_image_set.all %}
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link " id="nav-{{proimage.id}}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{proimage.id}}" type="button" role="tab" aria-controls="nav-{{proimage.id}}" aria-selected="false">
+                                    <img src="{{ proimage.images }}" alt="" style="width: 85px; height: 85px;">
+                                    </button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="product__modal-content">
+                            <h4><a href="product-details.html">Samsung C49J89: £875, Debenhams Plus</a></h4>
+                            <div class="product__review d-sm-flex">
+                                <div class="rating rating__shop mb-10 mr-30">
+                                <ul>
+                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                    <li><a href="#"><i class="fal fa-star"></i></a></li>
+                                </ul>
+                                </div>
+                                <div class="product__add-review mb-15">
+                                <span>01 review</span>
+                                </div>
+                            </div>
+                            <div class="product__price">
+                                <span>$109.00 – $307.00</span>
+                            </div>
+                            <div class="product__modal-des mt-20 mb-15">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-circle"></i> Bass and Stereo Sound.</a></li>
+                                    <li><a href="#"><i class="fas fa-circle"></i> Display with 3088 x 1440 pixels resolution.</a></li>
+                                    <li><a href="#"><i class="fas fa-circle"></i> Memory, Storage & SIM: 12GB RAM, 256GB.</a></li>
+                                    <li><a href="#"><i class="fas fa-circle"></i> Androi v10.0 Operating system.</a></li>
+                                </ul>
+                            </div>
+                            <div class="product__stock mb-20">
+                                <span class="mr-10">Availability :</span>
+                                <span>1795 in stock</span>
+                            </div>
+                            <div class="product__modal-form">
+                                <form action="#">
+                                <div class="pro-quan-area d-lg-flex align-items-center">
+                                    <div class="product-quantity mr-20 mb-25">
+                                        <div class="cart-plus-minus p-relative"><input type="text" value="1" /></div>
+                                    </div>
+                                    <div class="pro-cart-btn mb-25">
+                                        <button class="cart-btn" type="submit">Add to cart</button>
+                                    </div>
+                                </div>
+                                </form>
+                            </div>
+                            <div class="product__stock mb-30">
+                                <ul>
+                                    <li><a href="#">
+                                        <span class="sku mr-10">SKU:</span>
+                                        <span>Samsung C49J89: £875, Debenhams Plus</span></a>
+                                    </li>
+                                    <li><a href="#">
+                                        <span class="cat mr-10">Categories:</span>
+                                        <span>iPhone, Tablets</span></a>
+                                    </li>
+                                    <li><a href="#">
+                                        <span class="tag mr-10">Tags:</span>
+                                        <span>Smartphone, Tablets</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<!-- shop modal end -->
