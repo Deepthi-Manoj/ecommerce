@@ -148,7 +148,7 @@
                     </div>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                         <div class="product__modal-content">
-                            <h4><a href="product-details.html">Samsung C49J89: £875, Debenhams Plus</a></h4>
+                            <h4><a href="{{pro.slug}}">{{pro.name|truncatewords:15}}</a></h4>
                             <div class="product__review d-sm-flex">
                                 <div class="rating rating__shop mb-10 mr-30">
                                 <ul>
@@ -164,26 +164,21 @@
                                 </div>
                             </div>
                             <div class="product__price">
-                                <span>$109.00 – $307.00</span>
+                                <span>₹{{pro.price}}</span>
                             </div>
                             <div class="product__modal-des mt-20 mb-15">
                                 <ul>
-                                    <li><a href="#"><i class="fas fa-circle"></i> Bass and Stereo Sound.</a></li>
-                                    <li><a href="#"><i class="fas fa-circle"></i> Display with 3088 x 1440 pixels resolution.</a></li>
-                                    <li><a href="#"><i class="fas fa-circle"></i> Memory, Storage & SIM: 12GB RAM, 256GB.</a></li>
-                                    <li><a href="#"><i class="fas fa-circle"></i> Androi v10.0 Operating system.</a></li>
+                                    {{pro.description|safe|truncatewords_html:30}} 
+
                                 </ul>
                             </div>
                             <div class="product__stock mb-20">
                                 <span class="mr-10">Availability :</span>
-                                <span>1795 in stock</span>
+                                <span>{{pro.available}} in stock</span>
                             </div>
                             <div class="product__modal-form">
                                 <form action="#">
-                                <div class="pro-quan-area d-lg-flex align-items-center">
-                                    <div class="product-quantity mr-20 mb-25">
-                                        <div class="cart-plus-minus p-relative"><input type="text" value="1" /></div>
-                                    </div>
+                               
                                     <div class="pro-cart-btn mb-25">
                                         <button class="cart-btn" type="submit">Add to cart</button>
                                     </div>
@@ -192,18 +187,12 @@
                             </div>
                             <div class="product__stock mb-30">
                                 <ul>
-                                    <li><a href="#">
-                                        <span class="sku mr-10">SKU:</span>
-                                        <span>Samsung C49J89: £875, Debenhams Plus</span></a>
+                                    {% for proin in pro.additional_information_set.all|slice:"0:3" %}
+                                    <li><div>
+                                        <span class="sku mr-10">{{proin.title}}:</span>
+                                        <span>{{proin.spec}}</span></div>
                                     </li>
-                                    <li><a href="#">
-                                        <span class="cat mr-10">Categories:</span>
-                                        <span>iPhone, Tablets</span></a>
-                                    </li>
-                                    <li><a href="#">
-                                        <span class="tag mr-10">Tags:</span>
-                                        <span>Smartphone, Tablets</span></a>
-                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
