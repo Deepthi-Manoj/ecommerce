@@ -70,7 +70,7 @@
                                     <span>(01 review)</span>
                                 </div>
                                 <div class="price mb-10">
-                                    <span>₹{{pro.price}}</span>
+                                    <del>₹{{pro.price}}</del><span>{% discount_money pro.price pro.discount %}</span>
                                 </div>
                                 <div class="progress mb-5">
                                    <div class="progress-bar bg-danger" role="progressbar" style="width: {% progress_percentage pro.available pro.total %}%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
